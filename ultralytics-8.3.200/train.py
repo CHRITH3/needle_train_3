@@ -202,6 +202,7 @@ def train_needle_pose(
         weight_decay=0.0005,
         warmup_epochs=3,
         nbs = 64, # 梯度累积步数 = 64 / 8 = 8，即每8个batch更新一次梯度
+      #  amp = True,  # 启用混合精度
 
         # 小目标优化的数据增强
         **small_obj_config,
@@ -272,7 +273,7 @@ if __name__ == '__main__':
         'data_yaml': 'data.yaml',          # 数据集配置
         'epochs': 200,                     # 训练轮数
         'imgsz': 1280,                     # 输入分辨率 (小目标用1280)
-        'batch': 8,                        # 批次大小 (显存不足则降低)
+        'batch': 4,                        # 批次大小 (显存不足则降低)
         'project': 'runs/pose',            # 保存目录
         'name': 'needle_pose_0114',             # 实验名称
     }
