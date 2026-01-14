@@ -1,0 +1,27 @@
+# Needle Pose Dataset for YOLO11-pose
+# Example usage: yolo pose train data=data.yaml model=yolo11s-pose.pt
+
+# Dataset root directory
+path: datasets
+
+# Train/val/test sets
+train: images/train  # 175 images
+val: images/val      # 21 images
+test: images/test    # 23 images
+
+# Keypoints configuration
+kpt_shape: [2, 3]  # [number of keypoints, dimensions] - 2 keypoints with x,y,visibility
+
+# Flip indices for data augmentation (swap keypoints when horizontally flipped)
+# Since needle tip and needle eye should swap when flipped
+flip_idx: [1, 0]
+
+# Classes
+names:
+  0: needle
+
+# Keypoint names
+kpt_names:
+  0:
+    - needle_tip   # keypoint 0: tip of the needle
+    - needle_end   # keypoint 1: eye of the needle
